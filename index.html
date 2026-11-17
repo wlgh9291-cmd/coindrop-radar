@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>코인드랍레이더 — 지갑에 숨은 에어드랍·토큰 기록 찾기</title>
+    <meta name="description" content="이더리움·베이스·아비트럼·BNB 체인 등 8개 체인과 솔라나를 한 번에 확인하는 무료·비수익 도구예요. 지갑 주소만 넣으면 체인별 활동과 숨은 에어드랍·미청구 토큰 참고 정보를 찾아 드리고, 지갑 연결·서명 없이 공개된 기록만 읽으며 자격·지급을 보증하지 않습니다. 지갑 연결·서명 없이 공개된 기록만 읽고, 자격·지급을 보증하지 않습니다." />
+    <meta name="keywords" content="에어드랍 조회, 지갑 토큰 조회, 미청구 토큰, 코인 에어드랍 찾기, 코인드랍레이더, 멀티체인 지갑 조회" />
+    <meta name="author" content="안심랩 (AnsimLab)" />
+    <meta name="publisher" content="안심랩 (AnsimLab)" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://wlgh9291-cmd.github.io/coindrop-radar/" />
+    <!-- 절대 주소: Vercel 프로덕션 도메인 확정 후 1회 반영 (2026-11-17) -->
+    <meta name="theme-color" content="#f7f3ff" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.webmanifest" vite-ignore />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="코인드랍레이더" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="코인드랍레이더" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png" vite-ignore />
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16.png" vite-ignore />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png" vite-ignore />
+
+    <!-- 카카오톡·SNS 링크 공유 (OpenGraph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="코인드랍레이더" />
+    <meta property="og:title" content="코인드랍레이더 — 지갑에 숨은 에어드랍·토큰 기록 찾기" />
+    <meta property="og:description" content="이더리움·베이스·아비트럼·BNB 체인 등 8개 체인과 솔라나를 한 번에 확인하는 무료·비수익 도구예요. 지갑 주소만 넣으면 체인별 활동과 숨은 에어드랍·미청구 토큰 참고 정보를 찾아 드리고, 지갑 연결·서명 없이 공개된 기록만 읽으며 자격·지급을 보증하지 않습니다. 지갑 연결·서명 없이 공개된 기록만 읽고, 자격·지급을 보증하지 않습니다." />
+    <meta property="og:image" content="https://wlgh9291-cmd.github.io/coindrop-radar/og/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="코인드랍레이더 서비스 소개 이미지" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:url" content="https://wlgh9291-cmd.github.io/coindrop-radar/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="코인드랍레이더 — 지갑에 숨은 에어드랍·토큰 기록 찾기" />
+    <meta name="twitter:description" content="이더리움·베이스·아비트럼·BNB 체인 등 8개 체인과 솔라나를 한 번에 확인하는 무료·비수익 도구예요. 지갑 주소만 넣으면 체인별 활동과 숨은 에어드랍·미청구 토큰 참고 정보를 찾아 드리고, 지갑 연결·서명 없이 공개된 기록만 읽으며 자격·지급을 보증하지 않습니다. 지갑 연결·서명 없이 공개된 기록만 읽고, 자격·지급을 보증하지 않습니다." />
+    <meta name="twitter:image" content="https://wlgh9291-cmd.github.io/coindrop-radar/og/og-image.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "코인드랍레이더",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "ko",
+  "description": "이더리움·베이스·아비트럼·BNB 체인 등 8개 체인과 솔라나를 한 번에 확인하는 무료·비수익 도구예요. 지갑 주소만 넣으면 체인별 활동과 숨은 에어드랍·미청구 토큰 참고 정보를 찾아 드리고, 지갑 연결·서명 없이 공개된 기록만 읽으며 자격·지급을 보증하지 않습니다. 지갑 연결·서명 없이 공개된 기록만 읽고, 자격·지급을 보증하지 않습니다.",
+  "url": "https://wlgh9291-cmd.github.io/coindrop-radar/",
+  "author": { "@type": "Organization", "name": "안심랩 (AnsimLab)" },
+  "publisher": { "@type": "Organization", "name": "안심랩 (AnsimLab)" },
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "KRW"
+  }
+}
+    </script>
+
+    <!-- 텔레그램 미니앱 SDK. 일반 브라우저에서는 로드에 실패해도 아래 어댑터가 조용히 건너뜁니다. -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      /* 환경 어댑터 — 텔레그램 미니앱 안이면 ready·expand를 자동 실행하고,
+         일반 브라우저·PWA 환경에서는 아무 것도 하지 않습니다(오류 0건). */
+      (function () {
+        try {
+          var tg = window.Telegram && window.Telegram.WebApp;
+          if (tg && typeof tg.ready === 'function') tg.ready();
+          if (tg && typeof tg.expand === 'function') tg.expand();
+          if (tg && typeof tg.disableVerticalSwipes === 'function') {
+            try { tg.disableVerticalSwipes(); } catch (e) {}
+          }
+          if (tg && typeof tg.setHeaderColor === 'function') {
+            try { tg.setHeaderColor('#f7f3ff'); } catch (e) {}
+          }
+          if (tg && typeof tg.setBackgroundColor === 'function') {
+            try { tg.setBackgroundColor('#f7f3ff'); } catch (e) {}
+          }
+        } catch (e) {}
+        /* PWA 서비스 워커 등록 — 보안 문맥(https·localhost)에서만, 실패해도 앱 동작에는 지장 없음 */
+        if (
+          'serviceWorker' in navigator &&
+          (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+        ) {
+          window.addEventListener('load', function () {
+            navigator.serviceWorker.register('./sw.js').catch(function () {});
+          });
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-zPwhkHO6.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-YuM5tzvu.css">
+  </head>
+  <body>
+    <noscript>
+      <div style="max-width: 480px; margin: 0 auto; padding: 24px 20px; font-family: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 15px; line-height: 1.65; color: #191f28; background: #f7f3ff">
+        <h1 style="font-size: 20px">코인드랍레이더</h1>
+        <p style="font-weight: 600">무료 · 비수익 · 광고 없음</p>
+        <p>이 서비스는 자바스크립트가 있어야 동작합니다. 브라우저 설정에서 자바스크립트를 켜 주세요.</p>
+        <p>
+          본 서비스는 정보 제공 목적의 무료·비수익 참고 도구이며, 투자 자문·법률·세무 대리가 아닙니다. 외부 공개 API·시세·세법 가정에 기반하므로 정확성·실시간성을 보증하지 않으며, 본 서비스 이용 및 판단으로 발생한 직·간접적 손해(오입금, 거래 손실, 세무·신고 오류, 에어드랍 미지급 등)에 대해 제작자(안심랩)는 어떠한 법적·금전적 배상 책임도 지지 않습니다.
+        </p>
+        <p>공개된 기록을 요약한 참고 정보이며, 실제 에어드랍 자격·지급 여부를 보증하지 않습니다.</p>
+        <p style="font-weight: 600">제작·운영: 안심랩 (AnsimLab)</p>
+      </div>
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>

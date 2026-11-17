@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# 이 서비스는 개인정보를 수집·저장하지 않습니다(Zero-PII).
