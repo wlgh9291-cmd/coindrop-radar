@@ -2,6 +2,9 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <!-- 검색엔진 소유확인: Google Search Console · 네이버 서치어드바이저 (2026-11-18) -->
+    <meta name="google-site-verification" content="ybzg_U_9fnB_Yyj1p49U__PnyBLC_OwtdENHkcvfdz4" />
+    <meta name="naver-site-verification" content="1961fc178ffd22e9286fcc4ba4a97838410ee533" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
@@ -13,9 +16,12 @@
     <meta name="publisher" content="안심랩 (AnsimLab)" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://wlgh9291-cmd.github.io/coindrop-radar/" />
+    <!-- LINE 미니앱(LIFF) ID. LINE 미인증 상태라 지금은 비어 있고, LIFF ID를 받으면 여기에만 넣으면 됩니다. -->
+    <meta name="liff-id" content="" />
     <!-- 절대 주소: Vercel 프로덕션 도메인 확정 후 1회 반영 (2026-11-17) -->
-    <meta name="theme-color" content="#f7f3ff" />
-    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f7f3ff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f0c1b" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
 
     <!-- PWA -->
     <link rel="manifest" href="./manifest.webmanifest" vite-ignore />
@@ -66,6 +72,8 @@
     </script>
 
     <!-- 텔레그램 미니앱 SDK. 일반 브라우저에서는 로드에 실패해도 아래 어댑터가 조용히 건너뜁니다. -->
+    <!-- LINE 미니앱(LIFF) SDK — LINE 앱 웹뷰가 아니면 아래 어댑터가 조용히 건너뜁니다. -->
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js" async></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
       /* 환경 어댑터 — 텔레그램 미니앱 안이면 ready·expand를 자동 실행하고,
@@ -85,6 +93,52 @@
             try { tg.setBackgroundColor('#f7f3ff'); } catch (e) {}
           }
         } catch (e) {}
+        /* ── LINE(LIFF) 3중 호환 어댑터 ─────────────────────────────
+           · LINE 앱 웹뷰: LIFF ID가 있으면 초기화하고, 언어를 알려 줍니다.
+           · 일반 브라우저·텔레그램: SDK가 없거나 초기화에 실패해도 아무 것도 하지 않습니다(오류 0건).
+           · LIFF ID(meta[name=liff-id])가 비어 있으면 초기화를 시도하지 않습니다. */
+        window.__PICKLE_LIFF__ = { inLine: false, ready: false, lang: null };
+        (function () {
+          var bridge = window.__PICKLE_LIFF__;
+          try {
+            var ua = navigator.userAgent || '';
+            bridge.inLine = /Line\/\d/i.test(ua) || /LIFF/i.test(ua);
+          } catch (e) {}
+
+          function readLang() {
+            try {
+              if (window.liff && typeof window.liff.getLanguage === 'function') {
+                var value = window.liff.getLanguage();
+                if (value) bridge.lang = String(value).slice(0, 2).toLowerCase();
+              }
+            } catch (e) {}
+          }
+
+          function start() {
+            var meta = document.querySelector('meta[name="liff-id"]');
+            var liffId = meta && meta.getAttribute('content') ? meta.getAttribute('content').trim() : '';
+            readLang();
+            if (!liffId || !window.liff || typeof window.liff.init !== 'function') return;
+            window.liff
+              .init({ liffId: liffId })
+              .then(function () {
+                bridge.ready = true;
+                try {
+                  if (typeof window.liff.isInClient === 'function' && window.liff.isInClient()) bridge.inLine = true;
+                } catch (e) {}
+                readLang();
+                if (bridge.inLine) {
+                  document.documentElement.classList.add('in-line');
+                  document.documentElement.lang = bridge.lang || document.documentElement.lang;
+                }
+              })
+              .catch(function () {});
+          }
+
+          if (document.readyState === 'complete') start();
+          else window.addEventListener('load', start);
+        })();
+
         /* PWA 서비스 워커 등록 — 보안 문맥(https·localhost)에서만, 실패해도 앱 동작에는 지장 없음 */
         if (
           'serviceWorker' in navigator &&
@@ -96,8 +150,8 @@
         }
       })();
     </script>
-    <script type="module" crossorigin src="./assets/index-zPwhkHO6.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-YuM5tzvu.css">
+    <script type="module" crossorigin src="./assets/index-BEldV-Cp.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CPyEI_Jz.css">
   </head>
   <body>
     <noscript>
